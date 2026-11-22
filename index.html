@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Isabella &amp; Desmond — Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Pinyon+Script&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head><body class="locked">
+<div class="particles" id="particles" aria-hidden="true"></div>
+
+<!-- OPENING -->
+<section id="intro">
+  <p class="intro-top" id="introTop">A beautiful beginning awaits...</p>
+  <div class="env" id="env">
+    <div class="env-card"><span class="script" data-bind="initials"></span></div>
+    <div class="env-back"></div><div class="env-flap"></div>
+    <div class="seal"><span data-bind="initialsShort"></span></div>
+  </div>
+  <button class="btn" id="openBtn">Open Invitation</button>
+  <button class="skip" id="skipBtn">Skip intro</button>
+</section>
+
+<button id="musicBtn" class="music" hidden aria-label="Music on/off">♪ <span>Music On</span></button>
+
+<main id="main" hidden>
+  <!-- INVITATION -->
+  <section class="hero dark">
+    <p class="lead r">Together with our families</p>
+    <p class="lead r">We joyfully invite you to celebrate the union of</p>
+    <h1 class="names"><span class="script name" data-bind="bride" id="nBride"></span><span class="amp">&amp;</span><span class="script name" data-bind="groom" id="nGroom"></span></h1>
+    <div class="line"></div>
+    <p class="date" data-bind="dateLong"></p>
+    <a href="#couple" class="scroll-cue" aria-label="Scroll">⌄</a>
+  </section>
+
+  <!-- COUPLE -->
+  <section id="couple" class="sec">
+    <h2 class="r">Two hearts. One beautiful journey.</h2>
+    <div class="portraits">
+      <figure class="portrait from-left"><div class="frame"><img data-ph="Groom" data-src="groom" alt="Groom"></div><figcaption class="script" data-bind="groom"></figcaption></figure>
+      <figure class="portrait from-right"><div class="frame"><img data-ph="Bride" data-src="bride" alt="Bride"></div><figcaption class="script" data-bind="bride"></figcaption></figure>
+    </div>
+    <div class="gallery r">
+      <button class="arrow" id="gPrev" aria-label="Previous">‹</button>
+      <div class="track" id="track"></div>
+      <button class="arrow" id="gNext" aria-label="Next">›</button>
+    </div>
+    <p class="hint r">Swipe or tap a photo to enlarge</p>
+  </section>
+
+  <!-- LETTER -->
+  <section class="sec dark"><div class="card letter r">
+    <p class="flourish">❦</p><p id="message"></p><p class="flourish">❦</p></div></section>
+
+  <!-- STORY (optional: delete this section to remove) -->
+  <section class="sec" id="story">
+    <h2 class="r">Our Love Story</h2>
+    <p class="hint r">Tap a chapter to read it</p>
+    <div id="storyList" class="acc"></div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="sec dark" id="cdSec">
+    <h2 class="r">Counting down to our day</h2>
+    <div class="cd" id="cd">
+      <div><b id="cdD">000</b><small>Days</small></div><div><b id="cdH">00</b><small>Hours</small></div>
+      <div><b id="cdM">00</b><small>Minutes</small></div><div><b id="cdS">00</b><small>Seconds</small></div>
+    </div>
+    <p class="script big" id="cdDone" hidden></p>
+  </section>
+
+  <!-- DETAILS -->
+  <section class="sec" id="details">
+    <h2 class="r">Our Special Day</h2>
+    <p class="r date" data-bind="dateLong"></p>
+    <div class="grid" id="events"></div>
+    <div class="card r"><p class="label">Dress code</p><p data-bind="dress"></p><div class="swatches" id="swatches"></div></div>
+    <div class="card r" id="contactCard"><p class="label">Lost or need directions?</p><p>Call or message us and we will guide you to the venue.</p><p class="script big" id="contactNum" style="font-size:2rem"></p><a class="btn" id="callBtn">Call Now</a><a class="btn ghost" id="waBtn" target="_blank" rel="noopener">WhatsApp</a></div>
+    <button class="btn ghost r" data-toggle="#more">Discover the details</button>
+    <div class="more" id="more"><div><div class="card"><p class="label">A little note for you</p><p data-bind="note"></p></div></div></div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="sec dark" id="rsvp">
+    <h2 class="r">Will You Celebrate With Us?</h2>
+    <p class="r">Your presence would mean so much to us. Kindly let us know if you will be joining our celebration.</p>
+    <form id="rsvpForm" class="card form r" novalidate>
+      <label>Full name<input id="fName" type="text" autocomplete="name"></label>
+      <div class="choice">
+        <label><input type="radio" name="att" value="Joyfully Accept" checked><span>Joyfully Accept</span></label>
+        <label><input type="radio" name="att" value="Regretfully Decline"><span>Regretfully Decline</span></label>
+      </div>
+      <label id="gWrap">Number of guests attending<input id="fGuests" type="number" min="1" max="20" value="1" inputmode="numeric"></label>
+      <label>Phone number (optional)<input id="fPhone" type="tel" autocomplete="tel"></label>
+      <label>Message to the couple (optional)<textarea id="fMsg" rows="3"></textarea></label>
+      <p class="err" id="err" role="alert"></p>
+      <button class="btn" type="submit">Send RSVP</button>
+      <p class="ok" id="ok" role="status"></p>
+    </form>
+  </section>
+
+  <!-- GIFT -->
+  <section class="sec" id="gift">
+    <h2 class="r">Your Love &amp; Generosity</h2>
+    <p class="r">Your presence is the greatest gift of all. For friends and loved ones who may wish to bless us with a gift, we have provided our account details below. Your love and kindness are deeply appreciated.</p>
+    <div class="bank r"><p class="label">Bank</p><p data-bind="bank"></p><p class="label">Account name</p><p data-bind="acctName"></p>
+      <p class="label">Account number</p><p class="acct" data-bind="acctNo"></p>
+      <button class="btn" id="copyBtn">Copy Account Number</button></div>
+  </section>
+
+  <!-- CLOSING -->
+  <footer class="sec close dark">
+    <div class="line"></div>
+    <p class="script big r">We can't wait to celebrate with you.</p>
+    <p class="names2 script"><span data-bind="bride"></span> &amp; <span data-bind="groom"></span></p>
+    <p class="date" data-bind="dateLong"></p><p class="flourish">♡</p>
+    <button class="btn ghost" id="top">Back to top</button>
+  </footer>
+</main>
+
+<div id="lightbox" class="lb" hidden><button aria-label="Close">×</button><img alt=""></div>
+<div id="toast" class="toast" role="status"></div>
+<script src="script.js"></script>
+</body></html>
